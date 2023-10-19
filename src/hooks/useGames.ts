@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import apiClient, { CanceledError } from "../services/api-client";
 
-interface Results {
+export interface Results {
     id: number;
     name: string;
   }
   
-  interface Games {
+export interface Games {
     count: number;
     results: Results[];
   }
