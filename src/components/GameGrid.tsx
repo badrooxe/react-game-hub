@@ -1,8 +1,7 @@
 import useGames from "../hooks/useGames";
 
-const { games, loading, error } = useGames();
-
 const GameGrid = () => {
+  const { games, loading, error } = useGames();
   return (
     <ul
       className="list-group d-flex justify-content-center"
