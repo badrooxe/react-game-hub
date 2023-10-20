@@ -7,8 +7,14 @@ interface GameCardProps {
 
 const GameCard = ({ game }: GameCardProps) => {
   return (
-    <Card>
-      <Image height={"150"} width={285} src={game.background_image} />
+    <Card borderRadius={10}>
+      <Image
+        borderTopRadius={10}
+        objectFit={"cover"}
+        height={150}
+        width={285}
+        src={game.background_image}
+      />
       <CardBody>
         <Heading size={"sm"}>{game.name}</Heading>
       </CardBody>

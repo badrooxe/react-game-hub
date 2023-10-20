@@ -1,8 +1,11 @@
-import { SimpleGrid } from "@chakra-ui/react";
+import { SimpleGrid, useBreakpointValue } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 
 const GameGrid = () => {
+  const columns = useBreakpointValue({ base: 1, md: 2, lg: 3, xl: 4 });
+  const spacing = useBreakpointValue({ base: 5, md: 10, lg: 15, xl: 15 });
+
   const { games, loading, error } = useGames();
   return (
     <ul
@@ -15,7 +18,7 @@ const GameGrid = () => {
         </p>
       )}
       {loading && <div className="spinner-border"></div>}
-      <SimpleGrid columns={3} spacing={10}>
+      <SimpleGrid columns={columns} spacing={spacing} padding={5}>
         {games.map((game) => (
           <GameCard key={game.id} game={game}></GameCard>
         ))}

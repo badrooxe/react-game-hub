@@ -4,6 +4,7 @@ import apiClient, { CanceledError } from "../services/api-client";
 export interface Results {
     id: number;
     name: string;
+    background_image: string;
   }
   
 export interface Games {
