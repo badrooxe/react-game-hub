@@ -1,4 +1,4 @@
-import { Box, Grid, GridItem, Show, SimpleGrid } from "@chakra-ui/react";
+import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 
@@ -29,7 +29,7 @@ function App() {
         <GridItem
           area="main"
           borderTop={"2px solid black"}
-          borderLeft={"2px solid black"}
+          borderLeft={{ lg: "2px solid black" }}
         >
           <GameGrid />
         </GridItem>

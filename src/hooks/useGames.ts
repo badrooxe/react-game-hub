@@ -1,10 +1,17 @@
 import { useEffect, useState } from "react";
 import apiClient, { CanceledError } from "../services/api-client";
 
+export interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+}
+
 export interface Results {
     id: number;
     name: string;
     background_image: string;
+    platforms: {platform :Platform}[]
   }
   
 export interface Games {
