@@ -5,7 +5,6 @@ import {
   HStack,
   Heading,
   Image,
-  Text,
 } from "@chakra-ui/react";
 import { Results } from "../hooks/useGames";
 import PlateformIcon from "./PlateformIcon";
@@ -18,7 +17,15 @@ const GameCard = ({ game }: GameCardProps) => {
   const platforms = game.platforms.map((platform) => platform.platform);
 
   return (
-    <Card borderRadius={10} boxShadow={"0px 4px 10px rgba(0, 0, 0, 0.4)"}>
+    <Card
+      _hover={{
+        bg: "gray.100",
+        color: "black",
+        transition: "0.4s ease-in-out",
+      }}
+      borderRadius={10}
+      boxShadow={"0px 4px 10px rgba(0, 0, 0, 0.4)"}
+    >
       <Image
         borderTopRadius={10}
         objectFit={"cover"}

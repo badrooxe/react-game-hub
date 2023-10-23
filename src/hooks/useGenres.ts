@@ -1,27 +1,19 @@
-import { useEffect, useState } from "react";
-import apiClient, { CanceledError } from "../services/api-client";
+import { useEffect, useState } from 'react'
+import apiClient, { CanceledError } from '../services/api-client';
 
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
-
-export interface Results {
+export interface Results {  
     id: number;
     name: string;
-    background_image: string;
-    platforms: {platform :Platform}[];
-    rating: number;
-  }
-  
-export interface Games {
+    slug: string;
+    games_count: number;
+}
+
+export interface Genres {
     count: number;
     results: Results[];
-  }
-
-const useGames = () => {
-  const [games, setGames] = useState<Results[]>([]);
+}
+const useGenres = () => {
+  const [genre, setGenre] = useState<Results[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -30,11 +22,11 @@ const useGames = () => {
     setLoading(true);
     //axios
     apiClient
-      .get<Games>("/games", {
+      .get<Genres>("/genres", {
         signal: controller.signal,
       })
       .then((res) => {
-        setGames(res.data.results);
+        setGenre(res.data.results);
         setLoading(false);
         setError(null);
       })
@@ -45,11 +37,9 @@ const useGames = () => {
       });
 
     return () => controller.abort();
-  }, []);
+  },[]);
+  
+  return {genre, loading, error};
+}
 
-  return { games, loading, error };
-
-};
-
-
-export default useGames;
+export default useGenres;
