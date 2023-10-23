@@ -11,7 +11,8 @@ export interface Results {
     id: number;
     name: string;
     background_image: string;
-    platforms: {platform :Platform}[]
+    platforms: {platform :Platform}[];
+    rating: number;
   }
   
 export interface Games {
