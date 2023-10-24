@@ -34,17 +34,19 @@ const SideBar = () => {
               display: "flex",
               alignItems: "center",
               flexDirection: "row",
-              width: "90%",
+              width: "95%",
               height: "50px",
+              marginBottom: "18px",
               backgroundColor: "gray.100",
               borderRadius: "10px",
             }}
           >
             <Button
-              fontSize={"20px"}
+              variant={"link"}
+              fontSize={"23px"}
               backgroundColor={"#1A202C"}
               width={"100%"}
-              height={"60px"}
+              height={"70px"}
               display={"flex"}
               justifyContent={"flex-start"}
               whiteSpace={"nowrap"}
@@ -60,11 +62,11 @@ const SideBar = () => {
                 src={genre.image_background}
                 alt="Image"
                 style={{
-                  marginLeft: "-10px",
+                  marginLeft: "3px",
                   boxSizing: "border-box",
-                  width: "50px",
-                  height: "50px",
-                  borderRadius: "10px",
+                  width: "60px",
+                  height: "60px",
+                  borderRadius: "50%",
                   marginRight: "10px",
                 }}
               ></img>
