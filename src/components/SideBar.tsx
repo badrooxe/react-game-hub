@@ -1,8 +1,10 @@
-import { Button, HStack, Image, Text, VStack, theme } from "@chakra-ui/react";
+import { Button, Text, Toast, VStack } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 
 const SideBar = () => {
   const { genre, loading, error } = useGenres();
+  const toast = useToast();
 
   return (
     <div>
@@ -14,7 +16,7 @@ const SideBar = () => {
           flexDirection: "column",
         }}
       >
-        <Text fontSize={"30"} margin={"10px"}>
+        <Text fontSize={"25px"} margin={"10px"} marginBottom={"25px"}>
           Genres
         </Text>
         {error && (
@@ -35,7 +37,7 @@ const SideBar = () => {
               alignItems: "center",
               flexDirection: "row",
               width: "95%",
-              height: "50px",
+              height: "40px",
               marginBottom: "18px",
               backgroundColor: "gray.100",
               borderRadius: "10px",
@@ -43,10 +45,22 @@ const SideBar = () => {
           >
             <Button
               variant={"link"}
-              fontSize={"23px"}
+              onClick={() => {
+                console.log(genre.name + " clicked");
+                toast({
+                  title: genre.name + " clicked.",
+                  description:
+                    "You've clicked on the " + genre.name + " genre.",
+                  status: "success",
+                  duration: 2200,
+                  isClosable: true,
+                });
+              }}
+              ///////////////////////////////////////////
+              fontSize={"17px"}
               backgroundColor={"#1A202C"}
               width={"100%"}
-              height={"70px"}
+              height={"60px"}
               display={"flex"}
               justifyContent={"flex-start"}
               whiteSpace={"nowrap"}
@@ -64,13 +78,13 @@ const SideBar = () => {
                 style={{
                   marginLeft: "3px",
                   boxSizing: "border-box",
-                  width: "60px",
-                  height: "60px",
+                  width: "50px",
+                  height: "50px",
                   borderRadius: "50%",
                   marginRight: "10px",
                 }}
               ></img>
-              {genre.name}
+              <Text>{genre.name}</Text>
             </Button>
           </div>
         ))}
