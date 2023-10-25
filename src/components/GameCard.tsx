@@ -30,7 +30,7 @@ const GameCard = ({ game }: GameCardProps) => {
         borderTopRadius={10}
         objectFit={"cover"}
         height={150}
-        width={285}
+        width={290}
         src={game.background_image}
       />
       <CardBody padding={"15px"}>
