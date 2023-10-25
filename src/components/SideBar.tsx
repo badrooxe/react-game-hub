@@ -1,4 +1,4 @@
-import { Button, Text, Toast, VStack } from "@chakra-ui/react";
+import { Button, Text, VStack } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 
