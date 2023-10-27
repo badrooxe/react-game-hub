@@ -1,9 +1,14 @@
 import { Button, Text, VStack } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
-import useGenres from "../hooks/useGenres";
+import { GenresResults } from "../hooks/useGenres";
+import useData from "../hooks/useData";
 
-const SideBar = () => {
-  const { genre, loading, error } = useGenres();
+interface SideBarProps{
+  onSelectGenre:(genre:GenresResults)=>void;
+}
+
+const SideBar = ({onSelectGenre}:SideBarProps) => {
+  const { data, loading, error } = useData<GenresResults>('/genres');
   const toast = useToast();
 
   return (
@@ -30,7 +35,7 @@ const SideBar = () => {
       </div>
 
       <VStack>
-        {genre.map((genre) => (
+        {data.map((genre) => (
           <div
             style={{
               display: "flex",
@@ -47,6 +52,7 @@ const SideBar = () => {
               variant={"link"}
               onClick={() => {
                 console.log(genre.name + " clicked");
+                onSelectGenre(genre);
                 toast({
                   title: genre.name + " clicked.",
                   description:

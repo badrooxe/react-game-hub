@@ -1,20 +1,15 @@
 import { useEffect, useState } from 'react'
 import apiClient, { CanceledError } from '../services/api-client';
+import { AxiosRequestConfig } from 'axios';
 
-export interface GenresResults {  
-    id: number;
-    name: string;
-    slug: string;
-    games_count: number;
-    image_background: string;
-}
 
-export interface Genres {
+
+export interface Data<T> {
     count: number;
-    results: GenresResults[];
+    results: T[];
 }
-const useGenres = () => {
-  const [genres, setGenres] = useState<GenresResults[]>([]);
+const useData = <T>(endpoint: string , requestConfig?:AxiosRequestConfig, deps?: any[]) => {
+  const [data, setData] = useState<T[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -23,11 +18,11 @@ const useGenres = () => {
     setLoading(true);
     //axios
     apiClient
-      .get<Genres>("/genres", {
-        signal: controller.signal,
+      .get<Data<T>>(endpoint, {
+        signal: controller.signal, ...requestConfig
       })
       .then((res) => {
-        setGenres(res.data.results);
+        setData(res.data.results);
         setLoading(false);
         setError(null);
       })
@@ -38,9 +33,9 @@ const useGenres = () => {
       });
 
     return () => controller.abort();
-  },[]);
+  },deps ? [...deps] : []);
   
-  return {genres, loading, error};
+  return {data, loading, error};
 }
 
-export default useGenres;
+export default useData;
