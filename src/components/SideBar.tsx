@@ -3,12 +3,13 @@ import { useToast } from "@chakra-ui/react";
 import { GenresResults } from "../hooks/useGenres";
 import useData from "../hooks/useData";
 
-interface SideBarProps{
-  onSelectGenre:(genre:GenresResults)=>void;
+interface SideBarProps {
+  onSelectGenre: (genre: GenresResults) => void;
+  selectedGenre: GenresResults | null;
 }
 
-const SideBar = ({onSelectGenre}:SideBarProps) => {
-  const { data, loading, error } = useData<GenresResults>('/genres');
+const SideBar = ({ selectedGenre, onSelectGenre }: SideBarProps) => {
+  const { data, loading, error } = useData<GenresResults>("/genres");
   const toast = useToast();
 
   return (
@@ -50,6 +51,9 @@ const SideBar = ({onSelectGenre}:SideBarProps) => {
           >
             <Button
               variant={"link"}
+              paddingLeft={genre.id === selectedGenre?.id ? "10px" : "0px"}
+              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+              color={genre.id === selectedGenre?.id ? "yellow" : "-moz-initial"}
               onClick={() => {
                 console.log(genre.name + " clicked");
                 onSelectGenre(genre);
@@ -63,7 +67,7 @@ const SideBar = ({onSelectGenre}:SideBarProps) => {
                 });
               }}
               ///////////////////////////////////////////
-              fontSize={"17px"}
+              fontSize={"19px"}
               backgroundColor={"#1A202C"}
               width={"100%"}
               height={"60px"}
