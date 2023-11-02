@@ -6,11 +6,11 @@ import {
   Heading,
   Image,
 } from "@chakra-ui/react";
-import { Results } from "../hooks/useGames";
+import { GamesResults } from "../hooks/useGames";
 import PlateformIcon from "./PlateformIcon";
 
 interface GameCardProps {
-  game: Results;
+  game: GamesResults;
 }
 
 const GameCard = ({ game }: GameCardProps) => {

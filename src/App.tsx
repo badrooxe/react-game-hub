@@ -4,6 +4,7 @@ import GameGrid from "./components/GameGrid";
 import SideBar from "./components/SideBar";
 import { useState } from "react";
 import { GenresResults } from "./hooks/useGenres";
+import PlatformSelector from "./components/PlatformSelector";
 
 function App() {
   const [SelectedGenre, setSelectedGenre] = useState<GenresResults | null>(
@@ -35,6 +36,11 @@ function App() {
           borderTop={"2px solid black"}
           borderLeft={{ lg: "2px solid black" }}
         >
+          {/* 
+            //TODO: passe selected plateform via props
+          */}
+
+          <PlatformSelector selectedPlateform={null} />
           <GameGrid selectedGenre={SelectedGenre} />
         </GridItem>
       </Grid>

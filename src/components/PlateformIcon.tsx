@@ -8,9 +8,16 @@ import {
   FaApple,
   FaAndroid,
 } from "react-icons/fa";
-import { SiNintendo, SiPlaystationvita } from "react-icons/si";
+import {
+  SiNintendo,
+  SiPlaystationvita,
+  SiAtari,
+  SiCommodore,
+  SiSega,
+} from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
 import { MdPhoneIphone } from "react-icons/md";
+import { PiSpinnerBold } from "react-icons/pi";
 import { IconType } from "react-icons";
 
 interface platformProps {
@@ -38,6 +45,11 @@ const PlateformIcon = ({ platforms }: platformProps) => {
     "nintendo-switch": SiNintendo,
     web: BsGlobe,
     ios: MdPhoneIphone,
+    "atari-7800": SiAtari,
+    "commodore-amiga": SiCommodore,
+    genesis: SiSega,
+    neogeo: PiSpinnerBold,
+    "3do": PiSpinnerBold,
   };
   const renderedIcons = new Set<IconType>();
   return (

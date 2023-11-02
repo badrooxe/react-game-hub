@@ -4,11 +4,11 @@ import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import { GenresResults } from "../hooks/useGenres";
 
-interface GameGridProps{
-  selectedGenre: GenresResults | null
+interface GameGridProps {
+  selectedGenre: GenresResults | null;
 }
 
-const GameGrid = ({selectedGenre}:GameGridProps) => {
+const GameGrid = ({ selectedGenre }: GameGridProps) => {
   const columns = useBreakpointValue({ base: 1, md: 2, lg: 3, xl: 4 });
   const spacing = useBreakpointValue({ base: 5, md: 10, lg: 15, xl: 15 });
 
